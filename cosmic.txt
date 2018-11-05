@@ -1,6 +1,6 @@
 "cosmic"
 {
-	"base"		"base"
+	"base"		"sandbox"
 	"title"		"Cosmic"
 	"menusystem"	"1"
 }
