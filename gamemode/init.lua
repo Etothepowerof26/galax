@@ -1,0 +1,1 @@
+module("cosmic", package.seeall)
