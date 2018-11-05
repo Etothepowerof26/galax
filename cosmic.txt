@@ -1,0 +1,6 @@
+"cosmic"
+{
+	"base"		"base"
+	"title"		"Cosmic"
+	"menusystem"	"1"
+}
