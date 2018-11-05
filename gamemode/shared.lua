@@ -72,7 +72,7 @@ Init = function(NewFilePath)
 		FPath = NewFilePath .. "/*"
 	end
 	
-	Files, Directories = file.Find(FPath .. "/*", FileLoc)
+	Files, Directories = file.Find(FPath, FileLoc)
 	
 	table.foreach(Files, function(k, v)
 		local Prefix = v:sub(1, 3)
