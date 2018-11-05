@@ -5,6 +5,8 @@ function GM:Initialize()
 	self.BaseClass:Initialize()
 end
 
+team.SetUp(100, "Player", Color(175, 238, 238))
+
 module("galax", package.seeall)
 
 --[[
