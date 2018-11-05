@@ -1,1 +1,1 @@
-module("cosmic", package.seeall)
+module("galax", package.seeall)
