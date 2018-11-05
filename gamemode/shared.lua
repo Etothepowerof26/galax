@@ -38,23 +38,23 @@ FileLoc = "LUA"
 
 -- File functions (basically bad code)
 FileFuncs = {
+	["cl_"] = function(FilePath, File)
+		if (SERVER) then
+			AddCSLuaFile(FilePath)
+		else
+			include(File)
+		end
+	end,
 	["sh_"] = function(FilePath, File)
 		if (SERVER) then
 			AddCSLuaFile(FilePath)
+			include(File)
 		else
 			include(File)
 		end
 	end,
 	["sv_"] = function(FilePath, File)
 		if (SERVER) then
-			include(File)
-		end
-	end,
-	["cl_"] = function(FilePath, File)
-		if (SERVER) then
-			AddCSLuaFile(FilePath)
-			include(File)
-		else
 			include(File)
 		end
 	end
