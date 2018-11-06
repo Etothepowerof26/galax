@@ -49,7 +49,6 @@ Meta = {
 }
 
 -- ultimate hakr debug mode yes
--- Literally does nothing for right now.
 DebugMode = false
 
 -- File location variables.

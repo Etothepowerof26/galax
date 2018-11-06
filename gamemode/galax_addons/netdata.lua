@@ -143,13 +143,13 @@ else
 		hook.Call(Tag,nil,id,key,value)
 	end)
 	
-	function netdata.SetData(self, key,value)
+	--[[function netdata.SetData(self, key,value)
 		if self~=LocalPlayer() then error"not implemented" end
 		net.Start(Tag)
 			net.WriteString(key)
 			net.WriteType(value)
 		net.SendToServer()
-	end
+	end]]
 end
 
 local lookup={}

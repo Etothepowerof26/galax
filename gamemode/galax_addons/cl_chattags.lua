@@ -20,6 +20,20 @@ Hook("OnPlayerChat", HookTag, function(Player, Text, TeamOnly, IsDead)
 	end
 	
 	-- Rank
+	local RankTable = Player:GetRank()
+	if (RankTable.ShowInChat) then
+		Insert(ChatTable, Color(255, 255, 255))
+		Insert(ChatTable, "[")
+		Insert(ChatTable, RankTable.Color)
+		Insert(ChatTable, RankTable.PrintName)
+		Insert(ChatTable, Color(255, 255, 255))
+		Insert(ChatTable, "]")
+		Insert(ChatTable, Space)
+		-- Keep this for name color.
+		Insert(ChatTable, RankTable.Color)
+	else
+		Insert(ChatTable, RankTable.Color)
+	end
 	
 	-- Player Name
 	Insert(ChatTable, Player:Nick())

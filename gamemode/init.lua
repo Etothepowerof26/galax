@@ -13,3 +13,8 @@ end
 function GM:PlayerInitialSpawn(Player)
 	Player:SetTeam(100)
 end
+
+function GM:GetFallDamage(Player, Speed)
+	-- TODO: acknowledge gear
+	return (((Speed ^ 2) / 2) * 5)
+end
