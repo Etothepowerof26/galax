@@ -29,6 +29,10 @@ Log = function(Head, Message)
 	print(Message)
 end
 
+-- Function helper for creating hooks.
+Hook = hook.Add
+HookTag = "Galax"
+
 -- ultimate hakr debug mode yes
 DebugMode = false
 
