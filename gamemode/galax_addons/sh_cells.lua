@@ -1,0 +1,1 @@
+module("galax", package.seeall)

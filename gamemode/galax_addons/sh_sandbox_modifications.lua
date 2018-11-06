@@ -1,13 +1,8 @@
 module("galax", package.seeall)
 
--- This hook will determine if a player can drive props. 
-Hook("CanDrive", HookTag, function(Player, Entity)
-	return Player:IsAdmin()
-end)
-
--- This hook will determine if a player can modify a prop with the property menu.
--- In this case, they cant unless if they are an admin.
-Hook("CanProperty", HookTag, function(Player, Property, Entity)
+-- This will add hooks that dont need any other manipulation other than a 
+-- simple admin check.
+Hook({"CanDrive", "CanProperty"}, HookTag, function(Player, Entity)
 	return Player:IsAdmin()
 end)
 

@@ -42,6 +42,12 @@ Hook = function(Type, Name, Callback)
 end
 HookTag = "Galax"
 
+-- Metatable helpers.
+Meta = {
+	Player = FindMetaTable("Player"),
+	Entity = FindMetaTable("Entity")
+}
+
 -- ultimate hakr debug mode yes
 -- Literally does nothing for right now.
 DebugMode = false
