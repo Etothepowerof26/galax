@@ -57,3 +57,17 @@ Hook("CanTool", HookTag, function(Player, EyeTrace, Tool)
 		return false
 	end
 end)
+
+if (SERVER) then -- Server Modifications
+	
+	
+	
+else -- Client Modifications
+	Hook("SpawnMenuOpen", HookTag, function()
+		-- If not in own cell, return false.
+		-- Since function doesnt exist, replace with placeholder.
+		if (false) then
+			return false
+		end
+	end)
+end

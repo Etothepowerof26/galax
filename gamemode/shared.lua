@@ -30,10 +30,20 @@ Log = function(Head, Message)
 end
 
 -- Function helper for creating hooks.
-Hook = hook.Add
+Hook = function(Type, Name, Callback)
+	if (type(Type) == "table") then
+		table.foreach(Type, function(k, v)
+			Hook(v, Name, Callback)
+		end)
+	else
+		Log("hook", "Adding hook " .. Type)
+		hook.Add(Type, Name, Callback)
+	end
+end
 HookTag = "Galax"
 
 -- ultimate hakr debug mode yes
+-- Literally does nothing for right now.
 DebugMode = false
 
 -- File location variables.
@@ -46,20 +56,20 @@ FileFuncs = {
 		if (SERVER) then
 			AddCSLuaFile(FilePath)
 		else
-			include(File)
+			include(FilePath)
 		end
 	end,
 	["sh_"] = function(FilePath, File)
 		if (SERVER) then
 			AddCSLuaFile(FilePath)
-			include(File)
+			include(FilePath)
 		else
-			include(File)
+			include(FilePath)
 		end
 	end,
 	["sv_"] = function(FilePath, File)
 		if (SERVER) then
-			include(File)
+			include(FilePath)
 		end
 	end
 }
@@ -83,9 +93,9 @@ Init = function(NewFilePath)
 	table.foreach(Files, function(k, v)
 		local Prefix = v:sub(1, 3)
 		if (FileFuncs[Prefix]) then
-			FileFuncs[Prefix](AddonsFileLoc .. "/" .. v, v)
+			FileFuncs[Prefix](AddonsFileLoc .. "/" .. v)
 		else
-			FileFuncs["sh_"](AddonsFileLoc .. "/" .. v, v)
+			FileFuncs["sh_"](AddonsFileLoc .. "/" .. v)
 		end
 	end)
 	
