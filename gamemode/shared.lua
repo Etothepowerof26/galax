@@ -115,5 +115,5 @@ end
 hook.Add("InitPostEntity", "galax", function()
 	Init()
 	
-	Log("init", SERVER and "Loaded on the server!" or "Loaded on the client!")
+	Log("init", "Loaded on the " .. (SERVER and "Server" or "Client") .. "!")
 end)

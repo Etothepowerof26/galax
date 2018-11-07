@@ -19,6 +19,14 @@ Hook("OnPlayerChat", HookTag, function(Player, Text, TeamOnly, IsDead)
 		return true
 	end
 	
+	-- IsDead
+	if (IsDead) then
+		Insert(ChatTable, Color(255, 0, 0))
+		Insert(ChatTable, "*DEAD*")
+		Insert(ChatTable, Color(255, 255, 255))
+		Insert(ChatTable, Space)
+	end
+	
 	-- Rank
 	local RankTable = Player:GetRank()
 	if (RankTable.ShowInChat) then

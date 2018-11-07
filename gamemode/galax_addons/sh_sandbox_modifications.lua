@@ -55,8 +55,6 @@ end)
 
 if (SERVER) then -- Server Modifications
 	
-	
-	
 else -- Client Modifications
 	Hook("SpawnMenuOpen", HookTag, function()
 		-- If not in own cell, return false.

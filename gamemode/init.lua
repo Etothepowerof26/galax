@@ -12,9 +12,11 @@ end
 
 function GM:PlayerInitialSpawn(Player)
 	Player:SetTeam(100)
+	Player:SetRank(1)
 end
 
 function GM:GetFallDamage(Player, Speed)
 	-- TODO: acknowledge gear
-	return (((Speed ^ 2) / 2) * 5)
+	-- Use CSS fall damage for right now.
+	return math.max(0, math.ceil(0.2418*Speed - 141.75))
 end
