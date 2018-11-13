@@ -22,6 +22,9 @@ module("galax", package.seeall)
                           ▀                                      
 ]]
 
+-- ultimate hakr debug mode yes
+DebugMode = true
+
 -- Logging system for Galax.
 -- Basically a fancy way of printing.
 Log = function(Head, Message)
@@ -36,7 +39,9 @@ Hook = function(Type, Name, Callback)
 			Hook(v, Name, Callback)
 		end)
 	else
-		Log("hook", "Adding hook " .. Type)
+		if (DebugMode) then
+			Log("hook", "Adding hook " .. Type)
+		end
 		hook.Add(Type, Name, Callback)
 	end
 end
@@ -47,9 +52,6 @@ Meta = {
 	Player = FindMetaTable("Player"),
 	Entity = FindMetaTable("Entity")
 }
-
--- ultimate hakr debug mode yes
-DebugMode = false
 
 -- File location variables.
 AddonsFileLoc = "galax/gamemode/galax_addons"
@@ -96,6 +98,10 @@ Init = function(NewFilePath)
 	Files, Directories = file.Find(FPath, FileLoc)
 	
 	table.foreach(Files, function(k, v)
+		if (DebugMode) then
+			Log("init", "Loading file " .. AddonsFileLoc .. "/" .. v)
+		end
+	
 		local Prefix = v:sub(1, 3)
 		if (FileFuncs[Prefix]) then
 			FileFuncs[Prefix](AddonsFileLoc .. "/" .. v)
@@ -113,7 +119,17 @@ end
 
 -- Hooks it to InitPostEntity.
 hook.Add("InitPostEntity", "galax", function()
+	if (SERVER) then
+		-- This creates the 'galax' folder if it doesnt exist yet.
+		if (not file.Exists("galax", "DATA")) then
+			file.CreateDir("galax")
+		end
+	end
+	
 	Init()
 	
-	Log("init", "Loaded on the " .. (SERVER and "Server" or "Client") .. "!")
+	-- This is needed for any data related operations.
+	hook.Run("Galax:PostInit", GAMEMODE)
+	
+	Log("init", "Galax has loaded!")
 end)

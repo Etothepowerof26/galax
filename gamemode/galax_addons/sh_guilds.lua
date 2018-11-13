@@ -19,7 +19,7 @@ Guilds.Guilds = {}
 function Guilds.GetPlayerGuild(Player)
 	local SteamID
 	if (isentity(Player)) then
-		assert(not IsValid(Player), "bad argument #1 to GetPlayerGuild (entity/string expected, got NULL)"
+		assert(not IsValid(Player), "bad argument #1 to GetPlayerGuild (entity/string expected, got NULL)")
 		SteamID = Player:SteamID()
 	else
 		SteamID = Player
